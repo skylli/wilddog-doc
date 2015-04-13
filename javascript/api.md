@@ -37,7 +37,7 @@ ref=Wilddog("http://weather-control.wilddog.com/city/Beijing");
   如果操作成功`err` 为null,如果不成功 `err` 是一个包含 `code` 的对象 ,如果`err==null` auth为包含用户授权信息的对象
 
 ```js
-ref.authWithPassword({email:"badass@wilddog.com",password:"asshole"},
+ref.authWithPassword({email:"Loki@asgard.com",password:"asshole"},
 		function(err,auth){
 			if(err==null){
 				//auth success
@@ -64,12 +64,9 @@ e.g.`"weibo"` (目前支持微博平台).oauth服务的提供平台,目前支持
 
 ```js
 
-ref.authWithPassword({email:"someEmail"password:"password"},
-        function(err,auth){
-	        //不会被执行
-            console.log(err,auth);
-            
-});
+ref.authWithOAuthRedirect(provider,function(err,auth){
+	//can never be here	
+})
 
 ```
 
@@ -88,18 +85,15 @@ ref.authWithPassword({email:"someEmail"password:"password"},
   如果授权失败err 为代表错误的对象
 
 ```js
-ref.authWithPassword({email:"someEmail"password:"password"},
-		function(err,auth){
-			if(err==null){
-				//auth success
-				console.log(auth)
-			}
-			else{
-				//lets take care of err
-				console.log(err)
-			}
-		}
-);
+ref.authWithOAuthPopup(provider,function(err,auth){
+	if(err!=null){
+		//something unexpected happend
+	}
+	else{
+		console.log(auth);
+	}
+	
+})
 
 ```
 
@@ -119,9 +113,14 @@ ref.authWithPassword({email:"someEmail"password:"password"},
 
 
 ```js
-ref.createUser({email:"badass@wilddog.com",password:"asshole"},
+ref.createUser({email:"Loki@asgard.com",password:"asshole"},
 		function(err,data){
-			console.log(err,data);
+			if(err!=null){
+				//not success
+			}
+			else{
+				//create user success
+			}
 });
 ```
 
@@ -140,10 +139,10 @@ ref.createUser({email:"badass@wilddog.com",password:"asshole"},
 
 ```js
 
-var ref=Wilddog("https://someApp.wilddogio.com/p1");
-//ref refer to node someApp.wilddogio.com/p1
-child_ref=ref.child('abc');
-//now child_ref refer to node someApp.wilddogio.com/p1/abc
+var ref=Wilddog("https://weather-control.wilddogio.com/city");
+//ref refer to node weather-control.wilddogio.com/city
+child_ref=ref.child('Beijing');
+//now child_ref refer to "weather-control.wilddogio.com/city/Beijing"
 
 ```
 
@@ -167,10 +166,10 @@ var parent_ref=ref.parent();
 
 
 ```js
-var ref=Wilddog("https://someApp.wilddog.com/user/name");
+var ref=Wilddog("https://weather-control.wilddog.com/city/Beijing");
 //return the key to current node
 var key=ref.key();
-//key is 'name'
+//key is 'Bejing'
 
 ```
 ----
@@ -265,7 +264,7 @@ ref.remove()
 如果操作成功 `err==null` 否则,err为包含code的`object`  如果`code==1201`,此用户无权限访问当前节点,出现这种情况可能是因为没有进行授权,或者授权的用户无访问权限
 
 #### return
-新插入子节点的引用
+* 新插入子节点的引用
 
 
 ```js
@@ -296,7 +295,7 @@ var url=newKey.url()
 
 
 
-* callback `function(dataSnapshot)`  `dataSnapshot`  为`DataSnapshot` 类型
+* callback `function(snapshot)`  `snapshot`  为`Snapshot` 类型
  当监听到某事件时callback 会被执行. 
 
 
@@ -321,7 +320,7 @@ ref.on('childAdded',function(snapshot){
  |childChanged|当某个子节点发生变化时触发 |
  |childRemoved|当有子节点被删除时触发 |
 
-* callback `function(dataSnapshot)`  `dataSnapshot`  为`DataSnapshot` 类型
+* callback `function(snapshot)`  `snapshot`  为`Snapshot` 类型
  当监听到某事件时callback 会被执行. 
 
 ```js
@@ -336,70 +335,211 @@ ref.once('childAdded',function(snapshot){
 
 
 
-# DataSnapshot
+# Snapshot
+Snapshot是当前时间,某个节点数据的副本,Snapshot不会随当前节点数据的变化而发生改变.
+用户不会主动创建一个Snapshot,而是和 on或once 配合使用.
 
 ## val()
+返回当前快照的数据
+#### return 
+* `object|string|null|number|boolean`
+当前快照对应的数据
+
+```js
+
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	console.log(snapshot.val());
+	//should output {"PM2.5":432}
+})
+
+```
+``` js
+
+ref.update({"PM2.5":432})
+```
+----------
+
+
+## type()
+返回快照的数据类型
+#### return 
+* `string`
+当前数据的类型,返回值可能是 `'null' | 'object' | 'string' | 'number' `
+
+```js
+
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	if(snapshot.type()=='null'){
+		//has been deleted
+	}
+	else if(snapshot.type()=='object'){
+		//do something
+	}
+})
+
+ref.update({"PM2.5":432})
+
+
+```
+``` js
+
+ref.update({"PM2.5":432})
+```
+-----
+
+## child(key)
 
 #### params
+* key `string`
+	
 
 #### return 
 
-------------------------------------------------------------------------------------------
+```js
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	if(snapshot.type()=='null'){
+		//has been deleted
+	}
+	else if(snapshot.type()=='object'){
+		var pm25=snapshot.child('PM2.5');
+		console.log("The pm2.5 of Bejing is",pm25.val())
+	}
+})
 
-## child()
 
+```
+``` js
+
+ref.update({"PM2.5":432})
+```
+-----
+
+## forEach(callback)
+遍历快照中每一个子节点,执行回调函数
 #### params
-
-#### return 
-
------------------------------------------------------------------
-
-## forEach(action)
-
-#### params
-* action `function(key,data)`
-
-
-
+* callback `function(key,data)`
+  回调函数 `key` 当前子节点的key,`data` 当前子节点的value
 
 ``` js
-ref.on(childAdded,function(snapshot){
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on(value,function(snapshot){
 		snapshot.forEach(function(key,data){
-			console.log(k,data);
+			console.log("the",k,"of Bejing is:",data);
      });
 });
 
 ```
+``` js
+
+ref.update({"PM2.5":432})
+```
 
 ----------------------------------------------------------------------------------------
 
-## hasChild([key])
+## hasChild(key)
+检查是否存在某个子节点
 
-#### arguments
+#### params
+* key 输入参数,关注子节点的key
+
 
 #### return 
+* `boolean` 
+	`true` 子节点存在
+	`false` 子节点不存在
+
+```js
+
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	if(snapshot.type()=='null'){
+		//has been deleted
+	}
+	else if(snapshot.type()=='object'){
+		if(snap.hasChild('PM2.5')){
+			var pm25=snapshot.child('PM2.5');
+			console.log("The pm2.5 of Bejing is",pm25.val())
+		}
+		
+	}
+})
+
+
+```
+``` js
+
+ref.update({"PM2.5":432})
+```
+
 
 ------------------------------------------------------------------------------------------
 
 ## key()
-
-#### arguments
+返回当前节点的key
 
 #### return 
+* `string` 当前节点的key值
+
+```js
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	if(snapshot.type()=='null'){
+		//has been deleted
+	}
+	else if(snapshot.type()=='object'){
+		if(snap.hasChild('PM2.5')){
+			var pm25=snapshot.child('PM2.5');
+			var key=snapshot.key()
+			console.log("The ",pm25.key() ," of Bejing is",pm25.val())
+		}
+		
+	}
+})
+
+
+
+```
 
 --------------------------------------------------------------------------------------------
 
-## numChildren()
-
-#### arguments
+## numChild()
+返回子节点的个数
 
 #### return 
+* `string` 子节点的个数
 
 ---------------------------------------------------------------------------------------------
 
 ## ref()
-
-#### arguments
-
+返回当前Wilddog 实例的引用
 #### return 
+* 当前Wilddog 实例的引用
+
+```js
+
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	if(snapshot.type()=='null'){
+		//has been deleted
+	}
+	else if(snapshot.type()=='object'){
+		if(snap.hasChild('PM2.5')){
+			var pm25=snapshot.child('PM2.5');
+			var key=snapshot.key();
+			var _ref=pm25.ref();
+			if(pm25.val()>500){
+				_ref.set(500);
+			}
+			
+		}
+		
+	}
+})
+
+
+
+```
 
