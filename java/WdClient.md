@@ -185,3 +185,213 @@ ref.child("dota/heros/SF").setValue(hero, new ResultHandler(){
 });
 ```
 ----
+
+## public WdClient push(Object value)
+在当前Path进行新添加操作，将在本地为新数据生成一个唯一ID，该ID将作为当前path的子节点，且作为新数据的父节点。同时同步到云端。如果操作成功将触发已绑定的event。最后将返回新ID的引用对象WdClient。
+该函数是线程安全的，将阻塞其他的本地数据操作。
+
+### Param
+* value `Object`
+value的类型可以为String、Number、Boolean、null、Map或满足JavaBean规范的实体。
+
+* handler `ResultHandler`
+handler包含三个callback函数，用户可以实现ResultHandler接口中的函数，如果某个callback函数没有响应的处理，接口实现为`{}`函数即可。`push(value)`等价于`push(value, null)`。
+callback函数如下：
+> `success()` 操作成功。
+> `failure()` 操作异常或失败，WilddogError作为函数参数返回给调用者。
+> `timeout()` 操作超时。
+
+### Return
+WdClient 新ID的引用对象
+
+### throws Exception
+将操作异常上抛给用户
+
+### Sample
+
+```java
+WdClient ref = WilddogIO("http://demo.wilddog.com/test");
+// 添加增加一个数值，将生成一个新ID，操作结果为{"-JmpzI81egafHZo5":100}， 返回的path为“/test/a/b/-JmpzI81egafHZo5”
+WdClient  newRef = ref.child("a/b").push(100);
+// 添加一个实体
+DOTAHero hero = new DOTAHero();
+hero.setName("Nevermore");
+hero.setHp(435);
+hero.setMp(234);
+ref.child("heros").push(hero);
+
+```
+----
+
+## public WdClient push(Object value,  ResultHandler handler)
+在当前Path进行新添加操作，将在本地为新数据生成一个唯一ID，该ID将作为当前path的子节点，且作为新数据的父节点。同时同步到云端，操作结果将回调用户自定义的handler。如果操作成功将触发已绑定的event。最后将返回新ID的引用对象WdClient。
+该函数是线程安全的，将阻塞其他的本地数据操作。
+
+### Param
+* value `Object`
+value的类型可以为String、Number、Boolean、null、Map或满足JavaBean规范的实体。
+
+### Return
+WdClient 新ID的引用对象
+
+### throws Exception
+将操作异常上抛给用户
+
+### Sample
+自定义ResultHandler
+```java
+public MyHandler extends ResultHandler() {
+	public void success() {}
+	public void failure(WilddogError wilddogError) {
+		System.out.println(wilddogError.getCode());
+	}
+	public void timeout() {}
+}
+```
+```java
+WdClient ref = WilddogIO("http://demo.wilddog.com/test");
+ResultHandler handler = new MyHandler();
+// 添加增加一个数值，将生成一个新ID，操作结果为{"-JmpzI81egafHZo5":100}， 返回的path为“/test/a/b/-JmpzI81egafHZo5”
+WdClient  newRef = ref.child("a/b").push(100, handler);
+// 添加一个实体
+DOTAHero hero = new DOTAHero();
+hero.setName("Nevermore");
+hero.setHp(435);
+hero.setMp(234);
+ref.child("heros").push(hero, handler);
+
+```
+----
+
+## public void update(Object value)
+在当前Path进行赋值操作，与set的区别是不会影响到参数`value`中不涉及到的已存在的node，并同步到云端。如果操作成功将触发已绑定的event，例如Change，ChildAdded，ChildRemoved等。
+该函数是线程安全的，将阻塞其他的本地数据操作。
+
+### Param
+
+* value `Object`
+value的类型可以为String、Number、Boolean、null、Map或满足JavaBean规范的实体。
+当value为null时，等价于Path对应的Node的`remove()`操作。
+
+
+### Return
+
+void
+
+### Sample
+
+```java
+WdClient ref = WilddogIO("http://demo.wilddog.com/test");
+ref.child("a/b").update(100);
+// 等价 remove();
+ref.child("a/b").update(null);
+// 设置子树
+Map<String, String> children = new HashMap<String, String>();
+children.put("c", "cval");
+ref.child("a/b").update(children);
+// 添加一个实体
+DOTAHero hero = new DOTAHero();
+hero.setName("Nevermore");
+hero.setHp(435);
+hero.setMp(234);
+ref.child("heros").update(hero);
+```
+----
+
+## public void update(Object value, EventHandler handler)
+在当前Path进行赋值操作，与set的区别是不会影响到参数`value`中不涉及到的已存在的node，并同步到云端，操作结果将回调用户自定义的handler。如果操作成功将触发已绑定的event，例如Change，ChildAdded，ChildRemoved等。
+该函数是线程安全的，将阻塞其他的本地数据操作。
+
+### Param
+
+* value `Object`
+value的类型可以为String、Number、Boolean、null、Map或满足JavaBean规范的实体。
+当value为null时，等价于Path对应的Node的`remove()`操作。
+
+* handler `ResultHandler`
+handler包含三个callback函数，用户可以实现ResultHandler接口中的函数，如果某个callback函数没有响应的处理，接口实现为`{}`函数即可。`update(value)`等价于`update(value, null)`。
+callback函数如下：
+> `success()` 操作成功。
+> `failure()` 操作异常或失败，WilddogError作为函数参数返回给调用者。
+> `timeout()` 操作超时。
+
+### Return
+
+void
+
+### Sample
+自定义ResultHandler
+```java
+public MyHandler extends ResultHandler() {
+	public void success() {}
+	public void failure(WilddogError wilddogError) {
+		System.out.println(wilddogError.getCode());
+	}
+	public void timeout() {}
+}
+```
+```java
+WdClient ref = WilddogIO("http://demo.wilddog.com/test");
+ResultHandler handler = new MyHandler();
+ref.child("a/b").update(100, handler);
+// 等价 remove();
+ref.child("a/b").update(null, handler);
+// 设置子树
+Map<String, String> children = new HashMap<String, String>();
+children.put("c", "cval");
+ref.child("a/b").update(children, handler);
+// 添加一个实体
+DOTAHero hero = new DOTAHero();
+hero.setName("Nevermore");
+hero.setHp(435);
+hero.setMp(234);
+ref.child("heros").update(hero, hanlder);
+```
+----
+
+## public void remove()
+在当前Path进行删除操作，并同步到云端。如果操作成功将触发已绑定的event，例如Change，ChildRemoved。
+该函数是线程安全的，将阻塞其他的本地数据操作。
+
+### Return
+void
+
+### Sample
+
+```java
+WdClient ref = WilddogIO("http://demo.wilddog.com/test");
+ref.child("a/b").remove();
+```
+----
+
+## public void remove(ResultHandler handler)
+在当前Path进行删除操作，并同步到云端，操作结果将回调用户自定义的handler。如果操作成功将触发已绑定的event，例如Change，ChildRemoved。
+该函数是线程安全的，将阻塞其他的本地数据操作。
+
+### Param
+* handler `ResultHandler`
+handler包含三个callback函数，用户可以实现ResultHandler接口中的函数，如果某个callback函数没有响应的处理，接口实现为`{}`函数即可。`remove(value)`等价于`remove(value, null)`。
+callback函数如下：
+> `success()` 操作成功。
+> `failure()` 操作异常或失败，WilddogError作为函数参数返回给调用者。
+> `timeout()` 操作超时。
+
+### Return
+void
+
+### Sample
+```java
+public MyHandler extends ResultHandler() {
+	public void success() {}
+	public void failure(WilddogError wilddogError) {
+		System.out.println(wilddogError.getCode());
+	}
+	public void timeout() {}
+}
+```
+```java
+WdClient ref = WilddogIO("http://demo.wilddog.com/test");
+ResultHandler handler = new MyHandler();
+ref.child("a/b").remove(handler);
+```
+----
