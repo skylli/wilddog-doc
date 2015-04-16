@@ -1,5 +1,6 @@
 /*
 Title: javascript API
+Sort: 2
 */
 
 # Wilddog
@@ -267,16 +268,15 @@ var key=ref.key();
  <br/>
 * onComplete `function(err)` 
 如果操作成功 `err==null` 否则,err为包含code的`object`  如果`code==1201`,此用户无权限访问当前节点,出现这种情况可能是因为没有进行授权,或者授权的用户无访问权限
+
 ```js
-
-
 var ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
 //the initial value is {"temp":23,"humidity":30,"wind":2}
 
 ref.set({"temp":10,"pm2.5":500});
 //the expected value of https://weather-control.wilddogio.com/city/Beijing should be {"temp":10,"pm2.5":500}
-
 ```
+
 ----
 
 ## update(value,[onComplete])
@@ -613,4 +613,5 @@ ref.on('childChanged',function(snapshot){
 
 
 ```
+
 

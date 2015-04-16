@@ -1,3 +1,8 @@
+/*
+Title: Quick Start
+*/
+
+
 # Quickstart
 Wilddog提供了一种类似于`JavaScript`语法的表达式规则，可以轻松的定义自己的数据读写权限与数据校验。配合Wilddog的用户系统，提供了简单的身份验证，可以定义谁有权限读写什么数据。Wilddog的规则在服务器的Rule引擎中计算，保证了不会绕过rule操作数据。
 
