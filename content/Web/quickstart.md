@@ -1,5 +1,5 @@
 /*
-Title : Quick Start
+Title : 快速开始
 Sort : 1
 */
 
