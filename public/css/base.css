@@ -1,0 +1,1021 @@
+/*! HTML5 Boilerplate v5.0.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+/* ==========================================================================
+   压缩后的normalize.css(不允许改动)
+   ========================================================================== */
+
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+body {
+    margin: 0
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block
+}
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+    vertical-align: baseline
+}
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+[hidden],
+template {
+    display: none
+}
+a {
+    background-color: transparent
+}
+a:active,
+a:hover {
+    outline: 0
+}
+abbr[title] {
+    border-bottom: 1px dotted
+}
+b,
+strong {
+    font-weight: bold
+}
+dfn {
+    font-style: italic
+}
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+mark {
+    background: #ff0;
+    color: #000
+}
+small {
+    font-size: 80%
+}
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+sup {
+    top: -0.5em
+}
+sub {
+    bottom: -0.25em
+}
+img {
+    border: 0
+}
+svg:not(:root) {
+    overflow: hidden
+}
+figure {
+    margin: 1em 40px
+}
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
+}
+pre {
+    overflow: auto
+}
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+button {
+    overflow: visible
+}
+button,
+select {
+    text-transform: none
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+button[disabled],
+html input[disabled] {
+    cursor: default
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+input {
+    line-height: normal
+}
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    height: auto
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+legend {
+    border: 0;
+    padding: 0
+}
+textarea {
+    overflow: auto
+}
+optgroup {
+    font-weight: bold
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+td,
+th {
+    padding: 0
+}
+/* ==========================================================================
+   压缩后的normalize.css(不允许改动)
+   ========================================================================== */
+
+html {
+    color: #333130;
+    font: 12px/1.5 arial, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    /*    -webkit-font-smoothing: antialiased;*/
+    height: 100%;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga", "kern";
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    height: 100%;
+}
+/* ==========================================================================
+   font-face
+   ***************************web-font***************************
+   ========================================================================== */
+
+ol,
+ul {
+    list-style: none;
+}
+input,
+button,
+textarea {
+    outline: none;
+}
+i {
+    font-family: wd-icon;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   font-face
+   ***************************web-font***************************
+   ========================================================================== */
+
+/* ==========================================================================
+   link
+   ***************************链接规范****************************
+   ========================================================================== */
+
+a:focus,
+a:active,
+a:hover {
+    outline: none;
+}
+a {
+    text-decoration: none;
+    color: #E84D1E;
+    /*红色*/
+}
+/*本页打开链接*/
+
+.ui-link-important-self {
+    color: #E84D1E;
+}
+.ui-link-normal-self {
+    color: #999391;
+}
+.ui-link-important {
+    color: #E84D1E;
+}
+.ui-link-important:hover {
+    border-bottom: 1px solid #E84D1E;
+}
+.ui-link-normal {
+    color: #999391;
+}
+.ui-link-normal:hover {
+    border-bottom: 1px solid #999391;
+}
+/* ==========================================================================
+   link
+   ***************************链接规范***************************
+   ========================================================================== */
+
+/* ==========================================================================
+   text
+   ***************************文本规范***************************
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+h1 {
+    font-size: 22px;
+    line-height: 24px;
+}
+h2 {
+    font-size: 18px;
+    line-height: 20px;
+}
+h3 {
+    font-size: 16px;
+    line-height: 18px;
+}
+h4 {
+    font-size: 14px;
+    line-height: 16px;
+}
+h5 {
+    font-size: 12px;
+    line-height: 14px;
+}
+.section-tipserror {
+    display: none;
+    text-transform: none;
+    font-style: italic;
+    font-size: 12px;
+    color: rgb(233, 88, 70);
+}
+/*.title-font {}*/
+
+/* ==========================================================================
+   text
+   ***************************文本***************************
+   ========================================================================== */
+
+/* ==========================================================================
+   btn
+   ***************************按钮***************************
+   ========================================================================== */
+
+.ui-btn-prop-highlight {
+    border: 1px solid rgb(205, 70, 70);
+    border-radius: 3px;
+    background-color: rgb(230, 80, 30);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-prop-highlight:hover {
+    border-color: rgb(220, 85, 40);
+    background-color: rgb(235, 115, 75);
+}
+.ui-btn-prop-highlight:active {
+    border-color: rgb(230, 120, 85);
+    background-color: rgb(240, 145, 110);
+}
+.ui-btn-prop-normal {
+    border: 1px solid rgb(230, 80, 30);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(230, 80, 30);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-prop-normal:hover {
+    background-color: rgb(245, 195, 175);
+}
+.ui-btn-prop-normal:active {
+    background-color: rgb(240, 160, 130);
+}
+.ui-btn-red-highlight {
+    border: 1px solid rgb(210, 40, 40);
+    border-radius: 3px;
+    background-color: rgb(235, 50, 50);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-red-highlight:hover {
+    border-color: rgb(235, 50, 50);
+    background-color: rgb(240, 90, 90);
+}
+.ui-btn-red-highlight:active {
+    border-color: rgb(240, 90, 90);
+    background-color: rgb(245, 120, 120);
+}
+
+.ui-btn-red-normal {
+    border: 1px solid rgb(235, 50, 50);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(235, 50, 50);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-red-normal:hover {
+    border-color: rgb(235, 50, 50);
+    background-color: rgb(250, 190, 190); 
+}
+.ui-btn-red-normal:active {
+    border-color: rgb(235, 50, 50);
+    background-color: rgb(245, 150, 150); 
+}
+
+
+.ui-btn-green-highlight {
+    border: 1px solid rgb(50, 170, 110);
+    border-radius: 3px;
+    background-color: rgb(50, 190, 100);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-green-highlight:hover {
+    border-color: rgb(50, 190, 100);
+    background-color: rgb(90, 205, 130); 
+}
+.ui-btn-green-highlight:active {
+    border-color: rgb(90, 205, 130);
+    background-color: rgb(130, 215, 155); 
+}
+
+.ui-btn-green-normal {
+    border: 1px solid rgb(50, 190, 100);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(50, 190, 100);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-green-normal:hover {
+    background-color: rgb( 180, 235, 200 );
+}
+.ui-btn-green-normal:active {
+    background-color: rgb(140, 220, 170); 
+}
+
+
+.ui-btn-blue-highlight {
+    border: 1px solid rgb(65, 135, 215);
+    border-radius: 3px;
+    background-color: rgb(60, 150, 230);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-blue-highlight:hover {
+    border-color: rgb(60, 150, 230);
+    background-color: rgb(100, 170, 235); 
+}
+.ui-btn-blue-highlight:active {
+    border-color: rgb(100, 170, 235);
+    background-color: rgb(140, 190, 240); 
+}
+
+.ui-btn-blue-normal {
+    border: 1px solid rgb(60, 150, 230);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(60, 150, 230);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-blue-normal:hover { 
+    background-color: rgb( 185, 220, 245 );
+}
+.ui-btn-blue-normal:active {
+    background-color: rgb(150, 200, 240); 
+}
+
+.ui-btn-gray-highlight {
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-gray-highlight:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+.ui-btn-gray-highlight:active {
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+.ui-btn-gray-normal {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(205, 205, 205);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-gray-normal:hover { 
+    color: rgb(150, 150, 150);
+    background-color: rgb( 240, 240, 240 );
+    border-color: rgb(190, 190, 190);
+}
+.ui-btn-gray-normal:active {
+    color: rgb(150, 150, 150);
+    background-color: rgb( 205, 205, 205 );
+    border-color: rgb(190, 190, 190);
+}
+
+
+.ui-btn-special-highlight,.ui-btn-special-highlight1,.ui-btn-special-highlight2 {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 3px;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(205, 205, 205);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-special-highlight:hover {
+    background-color: rgb(230, 80, 30);
+    border-color: rgb(205, 70, 30);
+    color: rgb(255, 255, 255);
+}
+.ui-btn-special-highlight:active {
+    background-color: rgb(240, 145, 110);
+    border-color: rgb(230, 120, 85);
+    color: rgb(255, 255, 255);
+}
+
+.ui-btn-special-highlight1:hover {
+    border-color: rgb(230, 80, 30);
+    color: rgb(230, 80, 30);
+}
+.ui-btn-special-highlight1:active {
+    background-color: rgb(240, 160, 130);
+    border-color: rgb(230, 80, 30);
+    color: rgb(230, 80, 30);
+}
+.ui-btn-special-highlight2:hover {
+    border-color: rgb(210, 40, 40);
+    color: rgb(255, 255, 255);
+    background-color: rgb(235, 50, 50);
+}
+.ui-btn-special-highlight2:active {
+    background-color: rgb(245, 120, 120);
+    border-color: rgb(240, 90, 90);
+    color: rgb(255, 255, 255);
+}
+
+
+
+.ui-btn-special-normal {
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(205, 205, 205);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.ui-btn-special-normal:hover { 
+    color: rgb(255, 255, 255);
+    background-color: rgb(230, 80, 30);
+    opacity: none;
+}
+
+
+
+
+
+/* ==========================================================================
+   btn
+   ***************************按钮***************************
+   ========================================================================== */
+
+/* ==========================================================================
+   input
+   ***************************输入***************************
+   ========================================================================== */
+
+.input-text:focus {
+    border: 1px solid #66afe9;
+    -webkit-transition: border linear .1s, -webkit-box-shadow linear .1s;
+    -webkit-box-shadow: 0 1px -1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(102, 175, 233, .6) inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(102, 175, 233, .6) inset;
+}
+.border-error {
+    border: 1px solid #e95846;
+    -webkit-transition: border linear .1s, -webkit-box-shadow linear .1s;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(233, 88, 70, .6) inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(233, 88, 70, .6) inset;
+}
+/* ==========================================================================
+   input
+   ***************************输入***************************
+   ========================================================================== */
+
+/* ==========================================================================
+   input旋转
+   ***************************waiting***************************
+   ========================================================================== */
+
+.rotation {
+    position: relative;
+    top: 0px;
+    right: 24px;
+    -webkit-animation: loading 1s infinite linear;
+    -moz-animation: loading 1s infinite linear;
+    -o-animation: loading 1s infinite linear;
+    animation: loading 1s infinite linear;
+    visibility: hidden;
+}
+@-webkit-keyframes loading {
+    from {
+        -webkit-transform: rotate(360deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+    }
+}
+@-moz-keyframes loading {
+    from {
+        -moz-transform: rotate(3600deg);
+    }
+    to {
+        -moz-transform: rotate(0deg);
+    }
+}
+@-o-keyframes loading {
+    from {
+        -o-transform: rotate(3600deg);
+    }
+    to {
+        -o-transform: rotate(0deg);
+    }
+}
+/* ==========================================================================
+   旋转
+   ***************************waiting***************************
+   ========================================================================== */
+
+/* ==========================================================================
+    loading
+   ***************************spinner***************************
+   ========================================================================== */
+
+.spinner {
+    margin: 0 auto;
+    width: 150px;
+    text-align: center;
+}
+.spinner > div {
+    width: 17px;
+    height: 17px;
+    background-color: rgb(232, 77, 30);
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+/* ==========================================================================
+    loading
+   ***************************spinner***************************
+   ========================================================================== */
+
+/* ==========================================================================
+                                header部分
+   ========================================================================== */
+
+#container {
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100%;
+    position: relative;
+}
+#header {
+    position: relative;
+    height: 74px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+.header-logo {
+    float: left;
+}
+.header-logo img {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 20px;
+}
+.header-logo i {
+    font-size: 80px;
+    color: rgb(232, 77, 30);
+    margin-left: 10px;
+    height: 20px;
+    position: absolute;
+    top: -14px;
+    left: 31px;
+}
+.header-info {
+    float: right;
+}
+.header-details {
+    float: right;
+    margin-right: 20px;
+    margin-top: -5px;
+    color: rgb(153, 153, 153);
+}
+.header-info img {
+    width: 24px;
+    height: 24px;
+    margin-top: 23px;
+    border-radius: 50%;
+}
+.header-info span {
+    display: block;
+    float: right;
+    margin: 27px 20px auto 5px;
+    color: rgb(204, 204, 204);
+}
+.angle-down {
+    font-family: wd-icon;
+    font-style: normal;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    position: absolute;
+    top: 27px;
+    right: 0;
+}
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    display: none;
+}
+.dropdown-menu ul {
+    margin: 0;
+    padding: 0;
+}
+.console-triangle {
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgb(204, 204, 204);
+    position: absolute;
+    right: 21px;
+    top: -7.5px;
+}
+.console-triangle-bg {
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #FFFFFF;
+    position: absolute;
+    right: 22px;
+    top: -6px;
+}
+.dropdown-menu li {
+    width: 118px;
+    height: 38px;
+    background-color: #FFFFFF;
+}
+.dropdown-items1 {
+    border: 1px solid rgb(204, 204, 204);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.dropdown-items2 {
+    border: 1px solid rgb(204, 204, 204);
+    border-top: none;
+    border-bottom: none;
+}
+.dropdown-exit {
+    border: 1px solid rgb(204, 204, 204);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.dropdown-items1 i,
+.dropdown-items2 i,
+.dropdown-exit i {
+    position: absolute;
+    color: rgb(102, 102, 102);
+    left: 20px;
+}
+.dropdown-items1 i {
+    top: 11px;
+}
+.dropdown-items2 i {
+    top: 50px;
+}
+.dropdown-exit i {
+    left: 21px;
+    top: 89px;
+}
+.dropdown-items1-text,
+.dropdown-items2-text,
+.dropdown-exit-text {
+    position: absolute;
+    color: rgb(102, 102, 102);
+    right: 25px;
+}
+.dropdown-items1-text {
+    top: 11px;
+}
+.dropdown-items2-text {
+    top: 50px;
+}
+.dropdown-exit-text {
+    /*    right: 51px;*/
+    top: 89px;
+}
+.dropdown-items1:hover {
+    background-color: #e84d1e;
+}
+.dropdown-items1:hover i {
+    color: rgb(255, 255, 255);
+}
+.dropdown-items1:hover .dropdown-items1-text {
+    color: rgb(255, 255, 255);
+}
+.dropdown-items2:hover {
+    background-color: #e84d1e;
+}
+.dropdown-items2:hover i {
+    color: rgb(255, 255, 255);
+}
+.dropdown-items2:hover .dropdown-items2-text {
+    color: rgb(255, 255, 255);
+}
+.dropdown-exit:hover {
+    background-color: rgb(235, 50, 50);
+}
+.dropdown-exit:hover i {
+    color: rgb(255, 255, 255);
+}
+.dropdown-exit:hover .dropdown-exit-text {
+    color: rgb(255, 255, 255);
+}
+.dropdown-items1:hover .console-triangle-bg {
+    border-bottom: 7px solid #e84d1e;
+}
+/* ==========================================================================
+                                header部分
+   ========================================================================== */
+/* ==========================================================================
+                                account左侧导航部分
+   ========================================================================== */
+
+.main-nav {
+    float: left;
+    margin-left: 20px;
+    width: 160px;
+}
+.main-nav ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 82px;
+}
+.main-nav li {
+    height: 25px;
+}
+.main-nav i {
+    padding-right: 10px;
+    vertical-align: bottom;
+}
+.main-nav-select {
+    color: rgb(51, 51, 51);
+}
+/* ==========================================================================
+                                account左侧导航部分
+   ========================================================================== */
+
+/* ==========================================================================
+                                footer(带导航的)部分
+   ========================================================================== */
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 980px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-top: 1px solid rgb(232, 225, 224);
+}
+.footer-container {
+    margin-top: 10px;
+}
+.footer-container a {
+    font-size: 12px;
+    color: rgb(153, 147, 145);
+    margin-left: 26px;
+}
+#footer a:hover,
+#footer a:focus,
+#footer a:active {
+    color: rgb(204, 68, 27);
+    border-bottom: 1px solid rgb(204, 68, 27);
+}
+/* ==========================================================================
+                                footer（带导航）部分结束
+   ========================================================================== */
+
+/* ==========================================================================
+                                footer-account(console)部分
+   ========================================================================== */
+#footer-console a,
+#footer-account a {
+    float: right;
+    margin-right: 20px;
+}
+#footer-console a i,
+#footer-account a i {
+    position: fixed;
+    bottom: 16px;
+    font-size: 18px;
+    float: right;
+    margin-right: 20px;
+    color: rgb(229, 229, 229);
+}
+/* ==========================================================================
+                                footer-account(console)部分
+   ========================================================================== */
+
+/* ==========================================================================
+                                正确、错误提示
+   ========================================================================== */
+
+.operation {
+    display: none;
+    width: 241px;
+    height: 49px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 300;
+}
+.successful-operation,
+.erroneous-operation {
+    position: fixed;
+    top: 0;
+    border-radius: 5px;
+    line-height: 49px;
+    color: #ffffff;
+    width: 241px;
+    height: 49px;
+    z-index: 999;
+    opacity: 0.8;
+}
+.successful-operation {
+    background-color: #8aba56;
+    display: none;
+}
+.erroneous-operation {
+    background-color: #e95846;
+    display: none;
+}
+.successful-operation i,
+.erroneous-operation i {
+    vertical-align: sub;
+    font-size: 18px;
+    padding: 0 10px 0 18px;
+}
+/* ==========================================================================
+                                正确、错误提示
+   ========================================================================== */

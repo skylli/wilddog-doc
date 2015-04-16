@@ -1,3 +1,7 @@
+/*
+Title: javascript API
+*/
+
 # Wilddog
 
 ## Wilddog(wilddogUrl)

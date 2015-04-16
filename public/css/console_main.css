@@ -1,0 +1,1088 @@
+#main {
+    overflow: hidden;
+}
+.content {
+    margin-top: 34px;
+    width: 780px;
+    float: left;
+}
+.content-title {
+    line-height: 48px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    background-color: #ffffff;
+    z-index: 299;
+}
+.content-title i {
+    vertical-align: bottom;
+    padding-right: 10px;
+}
+/* ==========================================================================
+                                rules主体部分
+   ========================================================================== */
+
+.content-main {
+    margin-top: 20px;
+}
+.rules-function {
+    height: 25px;
+    position: relative;
+    margin-top: 17px;
+}
+.rules-function-revocation-elastic-layer,.rules-function-save-elastic-layer {
+    position: absolute;
+    top: -40px;
+    left: -31px;
+}
+.rules-function-save-elastic-layer {
+    left: 4px;
+  }
+.rules-function-revocation,
+.rules-function-save {
+    color: rgb(204, 204, 204);
+    display: block;
+    float: left;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+}
+.rules-function-revocation i,
+.rules-function-save i {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+    padding: 3px;
+}
+.rules-function-revocation i:hover {
+    color: rgb(51, 51, 51);
+    border-color: rgb(51, 51, 51);
+}
+
+.rules-function-save i:hover {
+    color: rgb(51, 51, 51);
+    border-color: rgb(51, 51, 51);
+}
+
+.elastic-layer-square {
+    display: block;
+    border: 1px solid rgb(102, 102, 102);
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 102, 102);
+    line-height: 24px;
+    text-align: center;
+    width: 81px;
+    height: 24px;
+    border-radius: 3px;
+}
+.elastic-layer-triangle {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgb(102, 102, 102);
+    position: relative;
+    top: 6px;
+    left: 30px;
+}
+
+.rules-function-save {
+    margin-left: 15px;
+}
+.rules-function-icon span i {
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+}
+.rules-function-sim-test {
+    display: block;
+    float: right;
+    width: 75px;
+    height: 25px;
+    line-height: 25px;
+}
+.rules-js {
+    margin-top: 20px;
+    min-height: 645px;
+}
+.rules-editor {
+    text-align: left;
+    width: 778px;
+    height: 410px;
+    margin-top: 15px;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 5px;
+}
+/*模拟部分*/
+
+.rules-sim-test {
+    margin-top: 20px;
+    min-height: 800px;
+}
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.rules-sim-test-first-step {
+    margin-top: 25px;
+}
+.rules-sim-test-first-step-title,
+.rules-sim-test-second-step-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(102, 102, 102);
+}
+.rules-sim-test-first-step div {
+    margin-top: 20px;
+    color: rgb(102, 102, 102);
+}
+.rules-sim-test-first-step div input {
+    vertical-align: text-top;
+    margin-right: 12px;
+}
+.rules-custom-auth-url {
+    font-size: 14px;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px;
+    width: 633px;
+    height: 34px;
+    line-height: 34px;
+    color: rgb(102, 102, 102);
+    vertical-align: sub !important;
+    margin-left: 51px;
+    margin-right: 0 !important;
+    padding-left: 5px;
+}
+.rules-sim-test-second-step {
+    margin-top: 70px;
+}
+.rules-sim-test-second-step div {
+    margin-top: 20px;
+    color: rgb(102, 102, 102);
+}
+.rules-sim-test-second-step-input span {
+    margin-right: 35px;
+}
+.rules-sim-test-second-step-input span input {
+    vertical-align: middle;
+    margin-right: 12px;
+}
+.rules-analog-reads,
+.rules-json-data {
+    font-size: 14px;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px;
+    min-width: 300px;
+    height: 34px;
+    line-height: 34px;
+    color: rgb(102, 102, 102);
+    padding-left: 5px;
+    margin-left: 5px;
+}
+.rules-analog-reads-btn {
+    width: 69px;
+    margin-left: 8px;
+    float: right;
+}
+.rules-json-data {
+    margin-left: 10px;
+    width: 656px;
+}
+.rules-sim-test-second-step h3 {
+    font-size: 12px;
+    margin-top: 12px;
+    color: rgb(102, 102, 102);
+}
+.rules-sim-results textarea {
+    padding: 0;
+    padding: 5px 0 0 12px;
+    line-height: 2;
+    vertical-align: top;
+    width: 693px;
+    height: 205px;
+    background-color: rgb(237, 237, 237);
+    margin-left: 18px;
+}
+/*模拟部分结束*/
+
+/* ==========================================================================
+                                rules主体部分结束
+   ========================================================================== */
+
+/* ==========================================================================
+                                keys主体部分
+   ========================================================================== */
+
+.keys-add-btn {
+    display: block;
+    float: right;
+    width: 139px;
+    margin-top: 25px;
+}
+.keys-item {
+    margin: 0;
+    padding: 0;
+    margin-top: 25px;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px;
+    width: 778px;
+    height: auto;
+    margin-bottom: 60px;
+}
+.keys-item-title {
+    background-color: rgb(229, 229, 229);
+    height: 37px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    line-height: 37px;
+}
+.keys-item-title-time {
+    display: block;
+    float: left;
+    width: 323px;
+    margin-left: 50px;
+}
+.keys-item-title-keys {
+    display: block;
+    float: left;
+    width: 310px;
+}
+.keys-item-title-operating {
+    display: block;
+    float: left;
+}
+.keys-item-tr {
+    height: 60px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    line-height: 60px;
+    position: relative;
+}
+.keys-item-tr-last {
+    border-bottom: none;
+}
+.keys-item-tr span {
+    display: block;
+    float: left;
+}
+.keys-item-tr-time {
+    display: block;
+    float: left;
+    width: 143px;
+    margin-left: 17px;
+}
+.keys-item-tr-keys-ps,
+.keys-item-tr-keys-text {
+    display: block;
+    float: left;
+    width: 470px;
+}
+.keys-item-tr-keys-ps input,
+.keys-item-tr-keys-text input {
+    border: 1px solid rgb(204, 204, 204);
+    background-color: transparent;
+    border-radius: 3px;
+    width: 440px;
+    height: 37px;
+    font-size: 14px;
+    color: rgb(204, 204, 204);
+    letter-spacing: 5px;
+    padding-left: 10px;
+}
+.keys-item-tr-keys-text input {
+    letter-spacing: 1px;
+    color: rgb(102, 102, 102);
+}
+.keys-item-tr-show,
+.keys-item-tr-hide,
+.keys-item-tr-discard {
+    display: block;
+    float: left;
+}
+.keys-item-tr-show button,
+.keys-item-tr-hide button,
+.keys-item-tr-discard button {
+    width: 59px;
+    font-size: 12px;
+}
+.keys-item-tr-discard {
+    margin-left: 10px;
+}
+.keys-item-tr-confirm {
+    position: absolute;
+    border: none;
+    z-index: 100px;
+    left: 240px;
+}
+.keys-item-tr-be-covered {
+    opacity: 0.1;
+}
+.keys-item-tr-confirm {
+    text-align: center;
+}
+.keys-item-tr-confirm button {
+    display: inline-block;
+    width: 139px;
+}
+.keys-item-tr-cancle {
+    margin-left: 12px;
+}
+/* ==========================================================================
+                                keys主体部分结束
+   ========================================================================== */
+
+/* ==========================================================================
+                                auth主体部分
+   ========================================================================== */
+
+.auth-title a {
+    border-bottom: 1px solid #E84D1E;
+}
+.auth-item1 {
+    padding: 0;
+    margin: 0;
+    width: 778px;
+    height: 47px;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px 3px 0 0;
+    margin-top: 50px;
+    line-height: 47px;
+}
+.auth-item1 a {
+    float: left;
+    width: 160px;
+    text-align: center;
+}
+.auth-item1 a li {
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    height: 45px;
+}
+.auth-item1-active {
+    border-bottom: 2px solid rgb(232, 77, 30);
+    color: rgb(232, 77, 30) !important;
+}
+.auth-item1-disable {
+    color: rgb(204, 204, 204) !important;
+    cursor: not-allowed;
+}
+.auth-wd {
+    height: auto;
+    min-height: 270px;
+    width: 778px;
+    border: 1px solid rgb(229, 229, 229);
+    margin-bottom: 50px;
+    border-top: none;
+}
+.open-auth-default-database {
+    height: 60px;
+    width: 780px;
+    color: rgb(102, 102, 102);
+    padding-top: 24px;
+}
+.open-auth-default-database input {
+    vertical-align: text-top;
+    margin-left: 31px;
+    margin-right: 8px;
+    color: #FFFFFF;
+}
+.open-auth-default-database span {
+    display: block;
+    margin-left: 31px;
+    margin-top: 5px;
+}
+.auth-item-section {
+    border-top: 1px solid rgb(229, 229, 229);
+}
+.auth-item2 {
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+    height: 22px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    font-size: 14px;
+    position: relative;
+    left: 13px;
+    width: 756px;
+}
+.auth-item2 a {
+    float: left;
+    width: 99px;
+    text-align: center;
+    position: absolute;
+    color: rgb(102, 102, 102);
+}
+.auth-item2-active {
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px 3px 0 0;
+    border-bottom-color: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(232, 77, 30) !important;
+}
+.auth-add-users {
+    left: 24px;
+}
+.auth-auth-items {
+    left: 123px;
+}
+.auth-mail-template {
+    left: 222px;
+}
+/*添加用户*/
+
+.auth-add-users-form {
+    margin-left: 10px;
+    margin-top: 23px;
+}
+.auth-add-users-form input {
+    font-size: 14px;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px;
+    width: 290px;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 10px;
+}
+.auth-add-users-form-ps {
+    margin-left: 5px;
+}
+.auth-add-users-form button {
+    width: 141px;
+    height: 36px;
+    margin-left: 5px;
+}
+/*添加用户结束*/
+
+/*用户列表*/
+
+.auth-auth-items-items {
+    padding: 0;
+    margin: 0;
+    margin-top: 23px;
+    width: 759px;
+    margin-left: 11px;
+    height: auto;
+    border: 1px solid rgb(241, 241, 241);
+    border-radius: 3px;
+    position: relative;
+    margin-bottom: 90px;
+}
+.auth-item-title {
+    font-size: 14px;
+    background-color: rgb(229, 229, 229);
+    height: 37px;
+    line-height: 37px;
+    color: rgb(102, 102, 102);
+    font-weight: 600;
+}
+.auth-item-tr {
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    position: relative;
+}
+.auth-item-title span,
+.auth-item-tr span {
+    display: block;
+    float: left;
+}
+.auth-item-id,
+.auth-item-user-id {
+    width: 215px;
+    margin-left: 49px;
+}
+.auth-item-user-mail {
+    width: 220px;
+    height: 60px;
+}
+.auth-item-user-mail span {
+    word-break: break-all;
+    line-height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 48.3%;
+    transform: translate(-50%, -50%);
+    width: 207px;
+}
+.auth-item-tr-last {
+    border-bottom: none;
+}
+.auth-item-send-reset button,
+.auth-item-delete button {
+    width: 138px;
+    font-size: 12px;
+}
+.auth-item-delete button {
+    width: 58px;
+    margin-left: 60px;
+}
+.auth-item-tr-be-cover {
+    opacity: 0.1;
+}
+.auth-item-tr-confirm {
+    position: absolute;
+    border: none;
+    z-index: 100px;
+    left: 240px;
+}
+.auth-item-tr-confirm {
+    text-align: center;
+}
+.auth-item-tr-confirm button {
+    display: inline-block;
+    font-size: 14px;
+    width: 139px;
+    height: 35px;
+}
+.auth-item-tr-cancle {
+    margin-left: 12px;
+}
+/*翻页的部分*/
+
+nav {
+    float: left;
+    position: relative;
+    left: 50%;
+    position: absolute;
+    bottom: -45px;
+}
+.auth-items-page-turning {
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    float: left;
+    left: -50%;
+}
+.auth-items-page-turning li {
+    float: left;
+    width: 23px;
+    height: 23px;
+    border: 1px solid rgb(204, 204, 204);
+    list-style: none;
+}
+.auth-items-page-num,
+.auth-items-page-next {
+    border-left: none !important;
+}
+.auth-items-page-previous {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.auth-items-page-next {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.auth-items-page-previous a i,
+.auth-items-page-next a i {
+    color: rgb(204, 204, 204);
+    line-height: 23px;
+}
+.auth-items-page-num a {
+    font-family: "Microsoft Yahei";
+    line-height: 23px;
+    color: rgb(204, 204, 204);
+}
+/*当前页面显示*/
+
+.auth-items-page-num-current {
+    background-color: rgb(232, 77, 30);
+    border: 1px solid rgb(204, 68, 27);
+}
+.auth-items-page-num-current a {
+    color: rgb(255, 255, 255);
+}
+/*当前页面显示结束*/
+
+.auth-items-page-turning li:hover {
+    background-color: rgb(232, 77, 30);
+    border: 1px solid rgb(204, 68, 27);
+    cursor: pointer;
+}
+.auth-items-page-turning li:hover a {
+    color: rgb(255, 255, 255);
+}
+.auth-items-page-turning li:hover a i {
+    color: rgb(255, 255, 255);
+}
+/*翻页的部分结束*/
+
+.auth-items-spinner {
+    display: none;
+    position: absolute;
+    bottom: -80px;
+    left: 40%;
+}
+/*用户列表结束*/
+
+/*邮件模板*/
+
+.auth-mail-template-form {
+    margin-top: 24px;
+    margin-left: 30px;
+}
+.auth-mail-template-form span {
+    display: block;
+}
+.auth-mail-template-form-tr {
+    width: 130px;
+    display: inline-block !important;
+}
+.auth-mail-template-form-sender input,
+.auth-mail-template-form-sender-sender-name input,
+.auth-mail-template-form-reply-address input,
+.auth-mail-template-form-mail-theme input {
+    font-size: 14px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+    width: 290px;
+    height: 34px;
+    color: rgb(102, 102, 102);
+    line-height: 34px;
+    padding-left: 12px;
+    margin-right: 10px;
+    margin-top: 13px;
+}
+.auth-mail-template-form-sender input {
+    margin-top: 25px;
+}
+.auth-mail-template-form-mail-format {
+    margin-top: 25px;
+}
+.auth-mail-template-form-mail-format-text,
+.auth-mail-template-form-mail-format-html {
+    display: inline-block !important;
+}
+.auth-mail-template-form-mail-format-html {
+    margin-left: 33px;
+}
+.auth-mail-template-form-mail-format input {
+    vertical-align: text-top;
+    margin-right: 12px;
+}
+.auth-mail-template-form-textarea textarea {
+    margin-top: 25px;
+    padding: 5px 0 0 12px;
+    height: 167px;
+    width: 716px;
+    line-height: 2;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px;
+}
+.auth-mail-template-form-save-template {
+    width: 141px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+/*邮件模板结束*/
+
+/*社交账号登录*/
+
+.auth-social {
+    height: auto;
+    min-height: 415px;
+    width: 778px;
+    border: 1px solid rgb(229, 229, 229);
+    margin-bottom: 50px;
+    border-top: none;
+}
+.auth-social-title {
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    padding-top: 23px;
+    padding-left: 32px;
+    width: 430px;
+    height: 40px;
+}
+.auth-item3 {
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+    height: 22px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    font-size: 14px;
+    position: relative;
+    left: 13px;
+    width: 756px;
+}
+.auth-item3 a {
+    float: left;
+    width: 99px;
+    text-align: center;
+    position: absolute;
+    color: rgb(102, 102, 102);
+}
+.auth-item3-active {
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 3px 3px 0 0;
+    border-bottom-color: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(232, 77, 30) !important;
+}
+.auth-items-weibo {
+    left: 24px;
+}
+.auth-items-qq {
+    left: 123px;
+}
+.auth-item3-disable {
+    color: rgb(204, 204, 204) !important;
+    cursor: not-allowed;
+}
+.open-auth-weibo-login {
+    padding-top: 23px;
+    padding-left: 32px;
+    line-height: 2;
+    color: rgb(102, 102, 102);
+}
+.open-auth-weibo-login input {
+    vertical-align: text-top;
+    margin-right: 10px;
+}
+.auth-item3-third-party {
+    padding-top: 46px;
+    padding-left: 32px;
+    color: rgb(102, 102, 102);
+}
+.auth-item3-input {
+    padding-top: 24px;
+    padding-left: 32px;
+    color: rgb(102, 102, 102);
+}
+.auth-item3-api-key input,
+.auth-item3-api-secret input {
+    border: 1px solid rgb(204, 204, 204);
+    width: 449px;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 12px;
+    border-radius: 3px;
+}
+.auth-item3-api-key input {
+    margin-left: 49px;
+}
+.auth-item3-api-secret input {
+    margin-left: 35px;
+}
+.auth-item3-api-secret {
+    margin-top: 12px;
+}
+.auth-item3-btn-save {
+    width: 141px;
+    margin: 48px auto 24px 32px;
+}
+/*社交账号登录结束*/
+
+/* ==========================================================================
+                                auth主体部分结束
+   ========================================================================== */
+
+/* ==========================================================================
+                                data主体部分
+   ========================================================================== */
+
+.data-function {
+    height: 25px;
+    position: relative;
+    margin-top: 17px;
+}
+.data-function-icon {
+    float: left;
+}
+/*data icon弹层部分*/
+
+.data-function-unfold-elastic-layer {
+    position: absolute;
+    top: -40px;
+    left: -32px;
+}
+.data-function-collapse-elastic-layer {
+    position: absolute;
+    top: -40px;
+    left: -1px;
+}
+.data-function-importing-elastic-layer {
+    position: absolute;
+    top: -40px;
+    left: 51px;
+}
+.data-function-export-elastic-layer {
+    position: absolute;
+    top: -40px;
+    left: 79px;
+}
+.elastic-layer-square {
+    display: block;
+    border: 1px solid rgb(102, 102, 102);
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 102, 102);
+    line-height: 24px;
+    text-align: center;
+    width: 81px;
+    height: 24px;
+    border-radius: 3px;
+}
+.elastic-layer-triangle {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgb(102, 102, 102);
+    position: relative;
+    top: 6px;
+    left: 30px;
+}
+/*data icon弹层部分结束*/
+
+.data-function-unflod:hover i,
+.data-function-collapse:hover i,
+.data-function-importing:hover i,
+.data-function-export:hover i {
+    color: rgb(51, 51, 51);
+}
+.data-function-examples {
+    float: right;
+}
+.data-function-unflod,
+.data-function-collapse,
+.data-function-importing,
+.data-function-export {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    position: relative;
+    z-index: 100;
+}
+.data-function-icon a i {
+    color: rgb(204, 204, 204);
+    font-size: 16px;
+}
+.data-function-collapse,
+.data-function-importing,
+.data-function-export {
+    margin-left: 15px;
+}
+.data-function-vertical-line {
+    display: block;
+    float: left;
+    width: 17px;
+    height: 17px;
+    border-right: 1px solid rgb(204, 204, 204);
+}
+.data-function-examples div {
+    width: 65px;
+    float: left;
+    color: rgb(153, 153, 153);
+    line-height: 13px;
+}
+.data-function-examples-mod span,
+.data-function-examples-add span,
+.data-function-examples-del span,
+.data-function-examples-mov span {
+    width: 11px;
+    height: 11px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.data-function-examples-mod span {
+    background-color: rgb(245, 187, 28);
+}
+.data-function-examples-add span {
+    background-color: rgb(138, 186, 86);
+}
+.data-function-examples-del span {
+    background-color: rgb(233, 88, 70);
+}
+.data-function-examples-mov span {
+    background-color: rgb(0, 183, 238);
+}
+.data-title {
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+}
+/*导入json的部分*/
+
+.data-importing-json {
+    border: 2px dashed rgb(229, 229, 229);
+    width: 776px;
+    height: 249px;
+    border-radius: 3px;
+    margin-top: 12px;
+    position: relative;
+}
+.data-importing-json form {
+    border: none;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0.1;
+}
+.data-importing-json-title {
+    margin-top: 25px;
+    font-size: 20px;
+    color: rgb(102, 102, 102);
+}
+.data-importing-json-title span {
+    padding: 0 7px 0 7px;
+}
+.data-importing-json-warning {
+    color: rgb(233, 88, 70);
+    margin-top: 18px;
+}
+.data-importing-json-choose-file a {
+    position: relative;
+    display: inline-block;
+    background-color: rgb(232, 77, 30);
+    border-radius: 3px;
+    overflow: hidden;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 35px;
+    width: 98px;
+    height: 35px;
+    margin-top: 25px;
+}
+.data-importing-json-choose-file a input {
+    position: absolute;
+    font-size: 12px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.data-choose-file-tips {
+    color: rgb(102, 102, 102);
+}
+.data-importing-json-btn {
+    margin-top: 35px;
+}
+.data-importing-json-btn button {
+    width: 138px;
+}
+.data-importing-json-btn-cancle {
+    margin-left: 20px;
+}
+.data-importing-json-status {
+    position: absolute;
+    top: 38%;
+    left: 40%;
+}
+.data-importing-json-status-text {
+    margin-left: 22px;
+    margin-top: 26px;
+    color: rgb(102, 102, 102);
+}
+/*导入json的部分结束*/
+
+.data-bread-crumbs {
+    border: 1px solid rgb(229, 229, 229);
+    width: 778px;
+    height: 22px;
+    border-radius: 3px;
+    line-height: 22px;
+    margin-top: 12px;
+}
+.data-bread-crumbs a {
+    color: rgb(153, 153, 153);
+}
+.data-bread-crumbs a span {
+    padding: 0 5px 0 5px;
+}
+.data-bread-crumbs a span:hover {
+    color: #e84d1e;
+    border-bottom: 1px solid #e84d1e;
+}
+/* ==========================================================================
+                                data主体部分结束
+   ========================================================================== */
+
+/* ==========================================================================
+                                stats主体部分
+   ========================================================================== */
+
+.stats-title {
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+}
+.stats-title span {
+    color: #e84d1e;
+}
+.stats-data-section {
+    margin: 0 auto;
+    text-align: center;
+    width: 780px;
+    height: 90px;
+    margin-top: 40px;
+}
+.stats-data {
+    display: inline-block;
+    width: 240px;
+    height: 90px;
+}
+.stats-values {
+    margin: 0;
+    font-size: 48px;
+    color: rgb(102, 102, 102);
+}
+.stats-values span {
+    font-size: 18px;
+    margin-left: 16px;
+}
+.stats-status {
+    margin: 0;
+    margin-top: -10px;
+}
+.stats-cards {
+    margin-top: 6px;
+    height: 725px;
+    margin-bottom: 103px;
+}
+.stats-user-cards {
+    display: block;
+    border: 1px solid rgb(229, 229, 229);
+    width: 379px;
+    height: 311px;
+    border-radius: 3px;
+    margin-top: 50px;
+}
+.stats-user-card1,
+.stats-user-card3 {
+    float: left;
+}
+.stats-user-card2,
+.stats-user-card4 {
+    float: right;
+}
+.stats-user-cards-section1 {
+    height: 49px;
+    background-color: rgb(229, 229, 229);
+}
+.stats-user-cards-tittle {
+    line-height: 49px;
+    font-size: 18px;
+    color: rgb(102, 102, 102);
+    margin-left: 12px;
+}
+.stats-user-cards-section2 {
+    height: 237px;
+}
+.stats-user-card1-section2,
+.stats-user-card4-section2 {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.stats-user-card2-section2 {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.stats-user-card3-section2 {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.stats-user-cards-section3 {
+    height: 25px;
+    background-color: rgb(229, 229, 229);
+}
+/* ==========================================================================
+                                stats主体部分结束
+   ========================================================================== */

@@ -1,0 +1,53 @@
+#main {
+    overflow: hidden;
+}
+.content {
+    margin-top: 34px;
+    width: 780px;
+    float: left;
+}
+/*顶部信息部分*/
+
+.content-title {
+    line-height: 48px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    background-color: #ffffff;
+}
+.content-title i {
+    vertical-align: bottom;
+    padding-right: 10px;
+}
+/*顶部信息部分结束*/
+
+.content-main-title {
+    float: left;
+    margin-top: 23px;
+    width: 460px;
+}
+.content-main-text {
+    float: right;
+    margin-top: 43px;
+    width: 240px;
+    line-height: 22px;
+    color: rgb( 204, 204, 204 );
+}
+
+.content-main-title h2 {
+    font-size: 12px;
+    color: rgb( 102, 102, 102 );
+}
+.content-main-title input {
+    padding: 0;
+    margin-top: 5px;
+    border: 1px solid rgb( 204, 204, 204 );
+    border-radius: 3px;
+    width: 446px;
+    height: 31px;
+    padding-left: 12px;
+    line-height: 31px;
+    color: rgb( 51, 51, 51 );
+}
+.btn-info,.btn-email,.btn-password {
+    width: 221px;
+    margin-top: 48px;
+}
