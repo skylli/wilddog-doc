@@ -12,23 +12,10 @@
     "knowledgebase",
     "markdown"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gilbitron/Raneto.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gilbitron/Raneto/issues"
-  },
-  "contributors": "https://github.com/gilbitron/Raneto/graphs/contributors",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/gilbitron/Raneto/master/LICENSE"
-    }
-  ],
   "main": "./app",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "forever start  ./bin/www",
+    "stop": "forever stop ./bin/www"
   },
   "engines": {
     "node": "~0.10.0"
@@ -47,26 +34,5 @@
     "static-favicon": "~1.0.0",
     "underscore": "^1.6.0",
     "underscore.string": "^2.3.3"
-  },
-  "homepage": "https://github.com/gilbitron/Raneto",
-  "_id": "raneto@0.2.0",
-  "_shasum": "1ad964d301b673a2e6b375ca081f9e2bf74c7e17",
-  "_from": "raneto@",
-  "_npmVersion": "1.4.10",
-  "_npmUser": {
-    "name": "alebcay",
-    "email": "calebcenter@live.com"
-  },
-  "maintainers": [
-    {
-      "name": "alebcay",
-      "email": "calebcenter@live.com"
-    }
-  ],
-  "dist": {
-    "shasum": "1ad964d301b673a2e6b375ca081f9e2bf74c7e17",
-    "tarball": "http://registry.npmjs.org/raneto/-/raneto-0.2.0.tgz"
-  },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/raneto/-/raneto-0.2.0.tgz"
+  }
 }
