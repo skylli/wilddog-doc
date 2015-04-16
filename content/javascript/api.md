@@ -6,11 +6,12 @@ Title: javascript API
 
 ## Wilddog(wilddogUrl)
 初始化一个Wilddog客户端
+输入一个包含应用ID 和路径的url,初始化一个 Wildog 客户端
 
 #### params
 
 * wilddogUrl `string`
- 关注节点的绝对路径,
+ 关注节点url,Wilddog 中任何数据都能够通过一个url来进行访问
 
 
 #### return
@@ -22,6 +23,18 @@ ref=Wilddog("http://weather-control.wilddog.com/city/Beijing");
 //yeah,lets do something really bad
 
 ```
+
+----
+
+## authWithCustomToken(token,callback)
+使用一个合法的token进行登录
+
+#### params
+* token `string`
+	已有的合法token
+* callback `function(err,auth)` 
+  如果操作成功`err` 为null,如果不成功 `err` 是一个包含 `code` 的对象 ,如果`err==null` auth为包含用户授权信息的   对象
+  
 
 ----
 
@@ -56,8 +69,8 @@ ref.authWithPassword({email:"Loki@asgard.com",password:"asshole"},
 ----
 
 ## authWithOAuthRedirect(provider,callback);
-通过
-调用`authWithOAuthPopup` ,页面跳转到 OAuth授权也,用户在页面进行授权操作,此过程中的任何数据都不会经过第三方 (包括WILDDOG 服务),而且全部采用https 访问,因此安全可靠.当授权结束页面跳转回最初页面,
+通过OAuth跳转流程授权
+调用`authWithOAuthPopup` ,页面跳转到 OAuth授权也,用户在页面进行授权操作,此过程中的任何数据都不会经过第三方 (包括WILDDOG 服务),而且全部采用https 访问,因此安全可靠.当授权结束页面跳转回最初页面,授权结束
 
 
 #### params
@@ -129,6 +142,60 @@ ref.createUser({email:"Loki@asgard.com",password:"asshole"},
 ```
 
 ----
+
+## changePassword(email,oldPassword,newPassword,callback)
+修改用户密码
+`WILDDOG` 平台托管的用户可以通过`changePassword` 修改密码
+
+#### params
+* email `string`
+  用户邮箱
+* oldPassword `string`
+  旧密码
+* newPassword `string`
+  新密码
+* callback `function(err,data)`
+ 如果操作成功`err` 为null,如果不成功 `err` 是一个包含 `code` 的对象 ,如果`err==null` data为包含用`id` ,`provider` 的 `object`
+
+
+----
+
+## changeEmail(oldEmail,newEmail,password,callback)
+修改登录邮箱
+`WILDDOG` 平台托管的用户可以通过`changeEmail` 修改登录邮箱
+
+#### params
+* oldEmail `string`
+* newEmail `string`
+* password 	`string`
+* callback `function(err)`
+
+----
+
+## removeUser(email,password,callback)
+删除帐号
+`WILDDOG` 平台托管的用户可以通过`removeUser` 删除帐号
+#### params
+
+* email `string`
+* password 	`string`	
+* callback `fucntion(err,callback)`
+
+
+-----
+
+## resetPassword(email,callback)
+重置密码
+`WILDDOG` 平台托管的用户可以通过`resetPassword` 重置密码
+
+#### param
+* email `string`
+* callback `function(err,callback)`
+
+
+
+
+-----
 
 ## child(key)
 返回当前节点的子节点的引用
