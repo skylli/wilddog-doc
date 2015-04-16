@@ -103,6 +103,7 @@ var raneto = {
 					}
 				}
 
+				
 				filesProcessed.push({
 					slug: shortPath,
 					title: _s.titleize(_s.humanize(path.basename(shortPath))),

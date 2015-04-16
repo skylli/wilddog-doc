@@ -1,7 +1,9 @@
 /*
-Title : 新手入门
+Title : Quick Start
+Sort : 1
 */
 
+# to be completed
 这篇文档暂时还没有完成,文档编写方法:   
 
 * 使用 git clone 项目 https://github.com/WildDogTeam/wilddog-doc.git

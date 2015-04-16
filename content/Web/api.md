@@ -1,6 +1,6 @@
 /*
-Title: javascript API
-Sort: 2
+Title: API Reference
+Sort: 3
 */
 
 # Wilddog
@@ -69,14 +69,14 @@ ref.authWithPassword({email:"Loki@asgard.com",password:"asshole"},
 ```
 ----
 
-## authWithOAuthRedirect(provider,callback);
+## authWithOAuthRedirect(provider,callback)
 通过OAuth跳转流程授权
 调用`authWithOAuthPopup` ,页面跳转到 OAuth授权也,用户在页面进行授权操作,此过程中的任何数据都不会经过第三方 (包括WILDDOG 服务),而且全部采用https 访问,因此安全可靠.当授权结束页面跳转回最初页面,授权结束
 
 
 #### params
-* provider `string`  
-e.g.`"weibo"` (目前支持微博平台).oauth服务的提供平台,目前支持的平台有 `weibo` `wechat`
+* provider `string`  e.g.`"weibo"` (目前支持微博平台)
+ oauth服务的提供平台,目前支持的平台有 `weibo` `wechat`
 * callback `function(err,auth)`
   如果授权失败err 为代表错误的对象 ,因为页面跳转,callback永远不会被执行.
 
@@ -87,6 +87,21 @@ ref.authWithOAuthRedirect(provider,function(err,auth){
 })
 
 ```
+
+----
+
+## authWithOAuthToken(provider,accessToken,callback)
+通过accessToken直接授权
+如果用户已经拿到accessToken,可以通过此接口直接进行授权
+
+#### param
+
+* provider `string`  e.g.`"weibo"` (目前支持微博平台)
+ oauth服务的提供平台,目前支持的平台有 `weibo` `wechat`
+* accessToken 	`string`	
+* callback 	`function(err,auth)`
+
+
 
 ----
 
@@ -144,55 +159,59 @@ ref.createUser({email:"Loki@asgard.com",password:"asshole"},
 
 ----
 
-## changePassword(email,oldPassword,newPassword,callback)
+## changePassword(credentials,callback)
 修改用户密码
 `WILDDOG` 平台托管的用户可以通过`changePassword` 修改密码
 
 #### params
-* email `string`
-  用户邮箱
-* oldPassword `string`
-  旧密码
-* newPassword `string`
-  新密码
+
+* credentials `object`
+	需要包含 `email` 邮箱 `oldPassword`旧密码 `newPassword` 新密码
+	
 * callback `function(err,data)`
  如果操作成功`err` 为null,如果不成功 `err` 是一个包含 `code` 的对象 ,如果`err==null` data为包含用`id` ,`provider` 的 `object`
 
 
 ----
 
-## changeEmail(oldEmail,newEmail,password,callback)
+## changeEmail(credentials,callback)
 修改登录邮箱
 `WILDDOG` 平台托管的用户可以通过`changeEmail` 修改登录邮箱
 
 #### params
-* oldEmail `string`
-* newEmail `string`
-* password 	`string`
+
+* credentials `object`
+	需要包含 `oldEmail` 新邮箱 `newEmail`旧邮箱 `password` 密码
+	
 * callback `function(err)`
+  回调函数,操作成功后会被调用,如果操作成功 `err==null` ,如果操作失败,`err` 是一个包含	`code` 的对象
 
 ----
 
-## removeUser(email,password,callback)
+## removeUser(credentials,callback)
 删除帐号
 `WILDDOG` 平台托管的用户可以通过`removeUser` 删除帐号
 #### params
-
-* email `string`
-* password 	`string`	
-* callback `fucntion(err,callback)`
+* credentials `object`
+	需要包含  `email`邮箱 `password` 密码
+	
+* callback `fucntion(err)`
+	回调函数,操作成功后会被调用,如果操作成功 `err==null` ,如果操作失败,`err` 是一个包含	`code` 的对象
 
 
 -----
 
-## resetPassword(email,callback)
+## resetPassword(credentials,callback)
 重置密码
+接口调用成功后并不会立刻重置密码,而是发一封邮件到此邮箱,用户通过该邮件的引导可完成重置密码操作
 `WILDDOG` 平台托管的用户可以通过`resetPassword` 重置密码
 
 #### param
-* email `string`
-* callback `function(err,callback)`
-
+* credentials `object`
+	需要包含  `email`邮箱 
+	
+* callback `function(err)`
+回调函数,操作成功后会被调用,如果操作成功 `err==null` ,如果操作失败,`err` 是一个包含	`code` 的对象
 
 
 
@@ -613,5 +632,4 @@ ref.on('childChanged',function(snapshot){
 
 
 ```
-
 
