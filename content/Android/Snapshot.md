@@ -1,3 +1,9 @@
+/*
+Title: Snapshot
+*/
+
+
+
 # Snapshot
 EventHandler触发时，作为参数传递给用户。如果是Changed、ChildChanged、ChildAdded接口获得最新的数据；如果是ChildRemoved接口获得被删除的数据。
 
