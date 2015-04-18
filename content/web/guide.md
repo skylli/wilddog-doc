@@ -1,9 +1,8 @@
 /*
-Title : 快速开始
-Sort : 1
+Title: 开发向导
+Sort : 2
 */
 
-# to be completed
 这篇文档暂时还没有完成,文档编写方法:   
 
 * 使用 git clone 项目 https://github.com/WildDogTeam/wilddog-doc.git

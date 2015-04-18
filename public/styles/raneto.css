@@ -115,16 +115,6 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.content pre {
-    background: #FFFDDC;
-    border: 0;
-}
-.content pre code {
-    color: #657B83;
-}
-.content .hljs {
-    background: none;
-}
 .content .page-meta {
     font-size: 85%;
     color: #999;
@@ -308,3 +298,8 @@ h5 {
 .content {
     margin-top: 25px;
 }
+
+pre {
+    padding: 0px;
+    
+    }
