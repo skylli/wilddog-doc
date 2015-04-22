@@ -1,5 +1,5 @@
 /*
-Title: 快速入门
+Title: 快速开始
 Sort: 0
 
 */
@@ -19,8 +19,8 @@ Sort: 0
 
 ## 第三步 在页面引入 Wilddog SDK
 在你的页面中引入Wilddog SDK非常简单,只需要一行代码就能搞定
-``` html
-<script src="http://cdn.wilddog.com/js/client/0.3.0/wilddogio.js" >
+``` 
+<script src = "http://cdn.wilddog.com/js/client/current/wilddogio.js" >
 
 ```
 
@@ -30,7 +30,7 @@ Sort: 0
 在操作数据库之前，需要先连接到wilddog云端。使用SDK，通过你App的URL创建一个Wilddog引用。
 
 ```js
-var ref =Wilddog("https://<appId>.wilddogio.com/")
+var ref = Wilddog("https://<appId>.wilddogio.com/");
 
 ```
 
