@@ -3,7 +3,6 @@ Title : 开发向导
 Sort : 1
 */
 
-
 ## 1.安装与设置
 
 #### 创建一个帐号
@@ -180,7 +179,7 @@ var postsRef = ref.child("posts");
 ```
 
 产生的数据有一个唯一ID:
-``` js
+```js
 {
   "posts": {
     "-JRHTHaIs-jNPLXO": {
@@ -215,9 +214,10 @@ var postsRef = ref.child("posts");
 ## 4.查询数据
 到目前为止,我们已经了解到如何向Wilddog中保存数据,现在我们来看看如何查询数据
 
->Wilddog 查询数据的方式是增加一个异步监听器,每当数据被第一次查询或者数据发生变化,这个监听器都会被触发
+>Wilddog 查询数据的方式是绑定一个异步监听callback,每当数据被第一次查询或者数据发生变化,这个监听callback都会被触发
 
 重新看blog的例子,读取post数据我们可以这么做:
+
 
 ```js
 // Get a reference to our posts
@@ -232,14 +232,217 @@ ref.on("value", function(snapshot) {
 
 ```
 
+`on()` 的参数是一个 事件类型 和一个接收数据的回调函数,回调函数接收 Snapshot类型 作为参数.这个例子中我们用 `'value'` 作为事件类型,我们还可以使用以下四中事件类型
 
+#### 数据类型
+
+> **数据事件**
+> 'value' 用来读取当前节点的静态数据快照, `value` 事件在`on` 被调用的时候被触发一次,之后每次数据发生改变都会被触发.当回调函数被调用时候,当前节点下所有数据的静态快照会被传入作为参数
+
+
+> **子节点被添加事件**
+> 当新的子节点被添加到当前节点, `child_added` 事件被触发,不像`value` 事件,在 'child_added' 事件的回调函数中传入的参数仅仅是被添加的那个节点的数据静态快照.
+>如果我们仅仅关心新增节点,我们可以 使用 `child_added`:
+```js
+// Get a reference to our posts
+var ref = new Firebase("https://demoblog.wilddogio.com/web/saving-data/fireblog/posts");
+
+// Retrieve new posts as they are added to Firebase
+ref.on("child_added", function(snapshot) {
+  var newPost = snapshot.val();
+  console.log("Author: " + newPost.author);
+  console.log("Title: " + newPost.title);
+});
+```
+> **子节点被改变事件**
+> 当子节点发生了改变,`child_changed`  事件被触发, `child_changed` 的事件回调函数中传入的参数是子节点改变后的数据的静态快照
+> **子节点被删除事件**
+> 当子节点被删除,`child_removed` 事件被触发, `child_removed`与 `child_added` `child_changed` 配合使用,可以>覆盖所有的数据变化
+
+#### 取消事件绑定
+
+通过off接口取消一个回调函数对事件的绑定:
+```js
+ref.off("value", originalCallback);
+```
 
 ## 5.组织数据
+使用NOSQL 存储,需要有一些技巧,我们需要了解数据如何被读取
+
+#### 避免层级过深
+
+尽管Json可以任意的组织数据,但不同的方式对读取性能的影响是很大的,Wilddog的工作方式是当你查询某个节点,Wilddog会查询这个节点下的所有子节点,所以,如果数据过于集中嵌套,读取一个父级节点可能读取非常多的子节点,造成流量和cpu的浪费.
+
+<div class="alert"> 我们不推荐这种实践 </div>
+```js
+{
+    // a poorly nested data architecture, because
+    // iterating "rooms" to get a list of names requires
+    // potentially downloading hundreds of megabytes of messages
+    "rooms": {
+      "one": {
+        "name": "room alpha",
+        "type": "private",
+        "messages": {
+          "m1": { "sender": "mchen", "message": "foo" },
+          "m2": { ... },
+          // a very long list of messages
+        }
+      }
+    }
+  }
+```
+
+#### 使数据扁平化
+
+如果数据分布到不同的path,会大大提高查询性能:
+
+```js
+
+{
+    // rooms contains only meta info about each room
+    // stored under the room's unique ID
+    "rooms": {
+      "one": {
+        "name": "room alpha",
+        "type": "private"
+      },
+      "two": { ... },
+      "three": { ... }
+    },
+
+    // room members are easily accessible (or restricted)
+    // we also store these by room ID
+    "members": {
+      // we'll talk about indices like this below
+      "one": {
+        "mchen": true,
+        "hmadi": true
+      },
+      "two": { ... },
+      "three": { ... }
+    },
+
+    // messages are separate from data we may want to iterate quickly
+    // but still easily paginated and queried, and organized by room ID
+    "messages": {
+      "one": {
+        "m1": { "sender": "mchen", "message": "foo" },
+        "m2": { ... },
+        "m3": { ... }
+      },
+      "two": { ... },
+      "three": { ... }
+    }
+  }
+  
+```
+
+#### 使数据可扩展化
+
+如果我们只关注单向的关系,并且关系非常稳定,我们可以把数据简单的嵌套起来:
+```
+{
+    "users": {
+      "john": {
+         "todoList": {
+            "rec1": "Walk the dog",
+            "rec2": "Buy milk",
+            "rec3": "Win a gold medal in the Olympics"
+         }
+      }
+    }
+  }
+```
+
+但是如果关系变成双向,就像下面的例子,用户可以属于某些组,组也属于某些用户,无论使用用户来嵌套组还是使用组来嵌套用户都是不可行的.
+需求通常要求通过用户来查询组,并且可以通过组来查询用户,我们可以用一个数据索引来解决这个问题
+
+```js
+// An index to track Mary's memberships
+  {
+    "users": {
+      "mchen": {
+        "name": "Mary Chen",
+        // index Mary's groups in her profile
+        "groups": {
+           // the value here doesn't matter, just that the key exists
+           "alpha": true,
+           "charlie": true
+        }
+      },
+      ...
+    },
+    "groups": { ... }
+  }
+
+```
+每一个用户下面有一个子节点`'groups'` 来作为这个用户加入的组的索引,同样,每一个组下面也有用户的索引.这样做的好吃是大大的提高查询性能
 
 
 
-## 6.了解安全规则
 
 
-## 7.用户授权
-用户授权
+
+## 6.了解安全
+安全是一个大的话题,并且非常重要,通常在app开发中,这一部分是最难的,Wilddog让这一切变得简单,Wilddog使用一种配置语言来配置安全规则
+
+#### 认证
+
+用户ID是一个非常重要概念,不同的用户拥有不同的数据和不同的权限,比如,在一个聊天程序,	每一条消息关联它的创造者,用户可以删除自己的消息,而不能删除别人的,让APP变得安全的第一步是用户认证
+
+Wilddog 提供了以下用户认证的方式
+* 集成微博 和其他 OAuth访问
+* Email,密码登录,并且提供用户管理
+* 匿名用户访问
+* 第三方Token登录
+
+#### 授权
+
+知道用户的身份只是安全的一部分,一旦你知道谁在访问数据,你需要一种方式来控制访问权限
+Wilddog提供了一种描述语言,你能在控制面板里的安全规则 tab 编辑.
+这些安全规则让你可以控制管理数据的访问规则.规则级联应用到其子节点
+
+```js
+{
+  "rules": {
+    "foo": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
+
+```
+
+这个例子允许所有人访问 `foo`
+
+安全规则包含一系列内置对象,和函数.你可以利用这些函和对象构建表达式,可以灵活的控制用户访问.最重要的一个内置对象是 auth,auth在app的用户认证的时候生成, auth包含一系列对象,包含一个唯一ID. auth.uid
+
+auth 变量是很多安全规则的基础
+
+```js
+{
+  "rules": {
+    "users": {
+      "$user_id": {
+        ".write": "$user_id === auth.uid"
+      }
+    }
+  }
+}
+```
+
+
+这个规则保证 用户只能访问 users 下 与 uid 同名的节点
+
+
+
+
+## 7.认证
+
+绝大多数应用都需要知道用户的身份,让服务端知道用户身份的过程叫做认证.Wilddog提供了一系列认证方式,简单方便.
+
+
+
+

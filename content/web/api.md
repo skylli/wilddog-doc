@@ -1,5 +1,6 @@
 /*
 Title: API 文档
+
 Sort: 3
 */
 
@@ -379,9 +380,9 @@ var url=newKey.url()
 |事件|说明|
  |----|----|
  |value| 当有数据请求或有任何数据发生变化时触发|
- |childAdded| 当有新增子节点时触发|
- |childChanged|当某个子节点发生变化时触发 |
- |childRemoved|当有子节点被删除时触发 |
+ |child_added| 当有新增子节点时触发|
+ |child_changed|当某个子节点发生变化时触发 |
+ |child_removed|当有子节点被删除时触发 |
 
 
 
@@ -391,7 +392,7 @@ var url=newKey.url()
 
 
 ```js
-ref.on('childAdded',function(snapshot){
+ref.on('child_added',function(snapshot){
 		console.log(snapshot.val());
 });
 ```
@@ -406,16 +407,16 @@ ref.on('childAdded',function(snapshot){
  |事件|说明|
  |----|----|
  |value| 当有数据请求或有任何数据发生变化时触发|
- |childAdded| 当有新增子节点时触发|
- |childChanged|当某个子节点发生变化时触发 |
- |childRemoved|当有子节点被删除时触发 |
+ |child_added| 当有新增子节点时触发|
+ |child_changed|当某个子节点发生变化时触发 |
+ |child_removed|当有子节点被删除时触发 |
 
 * callback `function(snapshot)`  `snapshot`  为`Snapshot` 类型
  当监听到某事件时callback 会被执行. 
 
 ```js
 
-ref.once('childAdded',function(snapshot){
+ref.once('child_added',function(snapshot){
 		console.log(snapshot.val());
 });
 
@@ -438,7 +439,7 @@ Snapshot是当前时间,某个节点数据的副本,Snapshot不会随当前节�
 ```js
 
 ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
-ref.on('childChanged',function(snapshot){
+ref.on('child_changed',function(snapshot){
 	console.log(snapshot.val());
 	//should output {"PM2.5":432}
 })
@@ -451,33 +452,6 @@ ref.update({"PM2.5":432})
 ----------
 
 
-## type()
-返回快照的数据类型
-#### return 
-* `string`
-当前数据的类型,返回值可能是 `'null' | 'object' | 'string' | 'number' `
-
-```js
-
-ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
-ref.on('childChanged',function(snapshot){
-	if(snapshot.type()=='null'){
-		//has been deleted
-	}
-	else if(snapshot.type()=='object'){
-		//do something
-	}
-})
-
-ref.update({"PM2.5":432})
-
-
-```
-``` js
-
-ref.update({"PM2.5":432})
-```
------
 
 ## child(key)
 
@@ -489,7 +463,7 @@ ref.update({"PM2.5":432})
 
 ```js
 ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
-ref.on('childChanged',function(snapshot){
+ref.on('child_changed',function(snapshot){
 	if(snapshot.type()=='null'){
 		//has been deleted
 	}
@@ -515,7 +489,7 @@ ref.update({"PM2.5":432})
 
 ``` js
 ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
-ref.on(value,function(snapshot){
+ref.on("value",function(snapshot){
 		snapshot.forEach(function(key,data){
 			console.log("the",k,"of Bejing is:",data);
      });
@@ -544,7 +518,7 @@ ref.update({"PM2.5":432})
 ```js
 
 ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
-ref.on('childChanged',function(snapshot){
+ref.on('child_changed',function(snapshot){
 	if(snapshot.type()=='null'){
 		//has been deleted
 	}
@@ -575,7 +549,7 @@ ref.update({"PM2.5":432})
 
 ```js
 ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
-ref.on('childChanged',function(snapshot){
+ref.on('child_changed',function(snapshot){
 	if(snapshot.type()=='null'){
 		//has been deleted
 	}
@@ -605,6 +579,35 @@ ref.on('childChanged',function(snapshot){
 
 ## ref()
 返回当前Wilddog 实例的引用
+#### return 
+* 当前Wilddog 实例的引用
+
+```js
+
+ref=Wilddog("https://weather-control.wilddogio.com/city/Beijing");
+ref.on('childChanged',function(snapshot){
+	if(snapshot.type()=='null'){
+		//has been deleted
+	}
+	else if(snapshot.type()=='object'){
+		if(snap.hasChild('PM2.5')){
+			var pm25=snapshot.child('PM2.5');
+			var key=snapshot.key();
+			var _ref=pm25.ref();
+			if(pm25.val()>500){
+				_ref.set(500);
+			}
+			
+		}
+		
+	}
+})
+
+
+
+```
+
+
 #### return 
 * 当前Wilddog 实例的引用
 
