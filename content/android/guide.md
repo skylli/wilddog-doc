@@ -312,26 +312,24 @@ Wilddog newRef = blogsRef.push(blog);
 newRef.remove();
 ```
 
+## 添加一个 ResultHandler Callback
 
+如果想知道修改数据的这些操作是否成功完成，可以添加一个监听器。这个监听器包括三个接口，成功（回调`suceess()`）、失败（回调`failure()`）、超时（回调`timeout()`）。
 
+```Java
+ref.setValue("hello world", new ResultHandler() {
+    public void success() {}
 
+	public void failure(WilddogError wilddogError) {}
 
-
-
-
-Adding a Completion Callback
-
-If you'd like to know when your data has been committed, you can add a completion listener. Both setValue() and updateChildren() take an optional completion listener that is called when the write has been committed to the Firebase servers. If the call was unsuccessful for some reason, the listener will be passed an error object indicating why the failure occurred:
-
-Copy
-ref.setValue("I'm writing data", new Firebase.CompletionListener() {
-    @Override
-    public void onComplete(FirebaseError firebaseError, Firebase firebase) {
-        if (firebaseError != null) {
-            System.out.println("Data could not be saved. " + firebaseError.getMessage());
-        } else {
-            System.out.println("Data saved successfully.");
-        }
-    }
+    public void timeout() {}
 });
+```
+
+
+
+
+
+
+
 
